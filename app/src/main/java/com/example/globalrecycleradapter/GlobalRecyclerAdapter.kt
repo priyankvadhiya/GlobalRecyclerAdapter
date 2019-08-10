@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class GlobalRecyclerAdapter(
-    private val list: List<Int>,
+    private val list: List<Any>,
     private val xmlLayout: Int,
     private val onRecyclerBindListener: OnRecyclerBindListener
 ) :

@@ -12,13 +12,17 @@ import kotlinx.android.synthetic.main.item_layout.view.*
 class MainActivity : AppCompatActivity(), GlobalRecyclerAdapter.OnRecyclerBindListener {
 
     lateinit var mContext: Context
+    var list = arrayListOf<ItemModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mContext = this
 
-        val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)
+
+        for (i in 0..9) {
+            list.add(ItemModel("ItemTest$i"))
+        }
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(mContext)
@@ -28,7 +32,7 @@ class MainActivity : AppCompatActivity(), GlobalRecyclerAdapter.OnRecyclerBindLi
     }
 
     override fun onRecyclerBind(rowView: View, position: Int) {
-        rowView.textView.text = "Item$position"
+        rowView.textView.text = "${list[position].title}"
         rowView.setOnClickListener {
             Toast.makeText(mContext, "$position", Toast.LENGTH_SHORT).show()
         }
